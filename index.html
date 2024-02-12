@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <h1>Candela Romero - Comision 49850</h1>
-    <script src="./main.js"></script>
+    <button id="btnCarrito">Ver/Ocultar carrito</button>
+    <div id="contenedorProductos"></div>
+    <div id="contenedorCarrito" class="contenedorCarrito">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Unidades</th>
+                    <th>Costo por unidad</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="items"></tbody>
+            <tfoot id="totales"></tfoot>
+        </table>
+    </div>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="./productos.js"></script>
+    <script type="module" src="./carrito.js"></script>
 </body>
 </html>

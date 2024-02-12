@@ -1,92 +1,142 @@
-class Producto {
-  constructor(nombre, precio, stock, categoria) {
-    this.nombre = nombre;
-    this.precio = precio;
-    this.stock = stock;
-    this.categoria = categoria;
-  }
+import { agregarCarrito } from "./carrito.js"
 
-  vender() {
-    this.stock -= 1; 
-  }
+const contenedorProductos = document.getElementById("contenedorProductos")
 
-  agregar(cantidadIncremento){
-    this.stock += cantidadIncremento; 
-  }
+export let productosDisponibles = JSON.parse(localStorage.getItem("productos"))
+
+document.addEventListener("DOMContentLoaded", () => {
+  cardsProductos(productosDisponibles)
+})
+
+const cardsProductos = (productos) => {
+  productos.forEach((producto) => {
+    const { nombre, precio, id } = producto
+    let card = document.createElement("div");
+    card.innerHTML = `
+      <p class="nombre">Nombre: ${nombre}</p>
+      <b class="precio">$${precio}</b>
+      <button class="agregarCarrito" id="btn${id}">Agregar al Carrito</button>
+    `;  
+    card.className = "container";
+    contenedorProductos.appendChild(card);
+
+    const btnAgregarCarrito = document.getElementById(`btn${id}`)
+    btnAgregarCarrito.addEventListener("click", () => agregarCarrito(id))
+  });
 }
 
-const productos = []
 
-productos.push(new Producto("gloss", 2000, 2, "Labiales"))
-productos.push(new Producto("delineador liquido", 1200, 5, "Delineadores"))
-productos.push(new Producto("labial rojo", 1200, 5, "Labiales"))
-productos.push(new Producto("delineador lapiz", 1300, 4, "Delineadores"))
-productos.push(new Producto("base liquida", 2000, 4, "Bases"))
+// class Producto {
+//   constructor(id, nombre, precio, stock, categoria) {
+//     this.id = id;
+//     this.nombre = nombre;
+//     this.precio = precio;
+//     this.stock = stock;
+//     this.categoria = categoria;
+//   }
 
-productos[1].vender();
-console.log(productos[1]);
-productos[0].vender();
-console.log(productos[0]);
-productos[0].agregar(3)
-console.log(productos[0]);
+//   vender() {
+//     this.stock -= 1; 
+//   }
 
-const buscarProducto = (nombre) => {
-  let productoEncontrado;
-  for (const producto of productos) {
-    if (producto.nombre === nombre) {
-      productoEncontrado = producto;
-    }
-  }
+//   agregar(cantidadIncremento){
+//     this.stock += cantidadIncremento; 
+//   }
+// }
 
-  if (productoEncontrado) {
-    alert(`
-      Nombre: ${productoEncontrado.nombre}
-      Precio: ${productoEncontrado.precio}
-      Tipo: ${productoEncontrado.categoria}
-    `);
-  } else {
-    alert('Producto no disponible')
-  }
-};
+// const productos = []
+
+// productos.push(new Producto(1, "gloss transparente", 2000, 2, "Labiales"))
+// productos.push(new Producto(2, "delineador liquido", 1200, 5, "Delineadores"))
+// productos.push(new Producto(3, "labial rojo", 1200, 5, "Labiales"))
+// productos.push(new Producto(4, "delineador lapiz", 1300, 4, "Delineadores"))
+// productos.push(new Producto(5, "base liquida", 2000, 4, "Bases"))
+// productos.push(new Producto(6, "base compacta", 2000, 1, "Bases"))
+// productos.push(new Producto(7, "gloss rosado", 1500, 7, "Labiales"))
+// productos.push(new Producto(8, "delineador gel", 3000, 9, "Delineadores"))
+// productos.push(new Producto(9, "labial rosado", 4500, 1, "Labiales"))
+// productos.push(new Producto(10, "labial beige", 2000, 4, "Labiales"))
+
+// let contenedor = document.getElementById("contenedor");
+
+// productos.forEach((item) => {
+//   let div = document.createElement("div");
+//   div.innerHTML = `
+//     <p class="nombre">Nombre: ${item.nombre}</p>
+//     <b class="precio">$${item.precio}</b>
+//     <button id="botonEliminar">Eliminar del carrito</button>
+//     <button id="botonAgregar">Agregar al carrito</button>
+//   `;  
+//   div.className = "container";
+//   contenedor.append(div);
+// });
 
 
-let nombre = prompt("Ingrese el nombre para buscar el producto");
-buscarProducto(nombre);
 
-const filtrarPorCategoria = (categoria) => {
-  const productosFiltrados = productos.filter(producto => producto.categoria == categoria);
-  if (productosFiltrados.length > 0) {
-    productosFiltrados.forEach((producto) => {
-      alert(`
-        Nombre: ${producto.nombre}
-        Precio: ${producto.precio}
-      `);
-    })
-  } else {
-    alert('Categoria no disponible')
-  }
-};
+// productos[1].vender();
+// console.log(productos[1]);
+// productos[0].vender();
+// console.log(productos[0]);
+// productos[0].agregar(3)
+// console.log(productos[0]);
 
-let categoria = prompt("Ingrese la categoria de productos que desea ver");
-filtrarPorCategoria(categoria);
+// const buscarProducto = (nombre) => {
+//   let productoEncontrado;
+//   for (const producto of productos) {
+//     if (producto.nombre === nombre) {
+//       productoEncontrado = producto;
+//     }
+//   }
 
-alert("Tenemos el 15% off en toda la tienda!!")
+// //   if (productoEncontrado) {
+// //     alert(`
+// //       Nombre: ${productoEncontrado.nombre}
+// //       Precio: ${productoEncontrado.precio}
+// //       Tipo: ${productoEncontrado.categoria}
+// //     `);
+// //   } else {
+// //     alert('Producto no disponible')
+// //   }
+// // };
 
-const descuentos = (productos, funcion) => {
-  for (const producto of productos) {
-    funcion(producto);
-    alert(`
-    Los nuevos precios son:
-    Nombre: ${producto.nombre}
-    Precio: ${precioConDescuento}
-  `)
-  }
-};
 
-const aplicarDescuento = (producto) => {
-  precioConDescuento = producto.precio - (producto.precio * 0.15)
-  return precioConDescuento
-}
+// //let nombre = prompt("Ingrese el nombre para buscar el producto");
+// buscarProducto(nombre);
 
-descuentos(productos, aplicarDescuento)
+// // const filtrarPorCategoria = (categoria) => {
+// //   const productosFiltrados = productos.filter(producto => producto.categoria == categoria);
+// //   if (productosFiltrados.length > 0) {
+// //     productosFiltrados.forEach((producto) => {
+// //       alert(`
+// //         Nombre: ${producto.nombre}
+// //         Precio: ${producto.precio}
+// //       `);
+// //     })
+// //   } else {
+// //     alert('Categoria no disponible')
+// //   }
+// // };
+
+// //let categoria = prompt("Ingrese la categoria de productos que desea ver");
+// filtrarPorCategoria(categoria);
+
+// //alert("Tenemos el 15% off en toda la tienda!!")
+
+// // const descuentos = (productos, funcion) => {
+// //   for (const producto of productos) {
+// //     funcion(producto);
+// //     alert(`
+// //     Los nuevos precios son:
+// //     Nombre: ${producto.nombre}
+// //     Precio: ${precioConDescuento}
+// //   `)
+// //   }
+// };
+
+// const aplicarDescuento = (producto) => {
+//   precioConDescuento = producto.precio - (producto.precio * 0.15)
+//   return precioConDescuento
+// }
+
+// descuentos(productos, aplicarDescuento)
 

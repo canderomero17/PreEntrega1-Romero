@@ -1,0 +1,21 @@
+.nombre {
+    font-size: larger;
+}
+
+.precio {
+    font-size: large;
+    background-color: blanchedalmond;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.contenedorCarrito {
+    display: none;
+}
