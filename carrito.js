@@ -2,21 +2,21 @@ import { productosDisponibles } from "./main.js"
 
 JSON.parse(sessionStorage.getItem("carrito")) === null && sessionStorage.setItem("carrito", JSON.stringify([]))
 
-document.addEventListener("DOMContentLoaded", () => {cardsCarrito()})
+document.addEventListener("DOMContentLoaded", () => {itemsCarrito()})
 
 let carrito = JSON.parse(sessionStorage.getItem("carrito"))
-const listaCarrito = document.getElementById("items")
-const footCarrito = document.getElementById("totales")
+const productosCarrito = document.getElementById("items")
+const footerTable = document.getElementById("footer")
 const btnCarrito = document.getElementById("btnCarrito")
 const carritoTable = document.getElementById("contenedorCarrito")
 
 btnCarrito.addEventListener("click", () => {
-    cardsCarrito()
+    itemsCarrito()
     if(carritoTable.style.display === "block"){
         carritoTable.style.display = "none"
     } else {
         carritoTable.style.display = "block"
-        cardsCarrito()
+        itemsCarrito()
     }
     
 })
@@ -46,8 +46,8 @@ export const agregarCarrito = (idProducto) => {
     alert(`producto ${nombre} agregado al carrito`)
 }
 
-const cardsCarrito = () => {
-        listaCarrito.innerHTML = ''
+const itemsCarrito = () => {
+        productosCarrito.innerHTML = ''
         carrito.forEach(producto => {
         const { nombre, cantidad, precio, id } = producto
         let body = document.createElement("tr")
@@ -65,7 +65,7 @@ const cardsCarrito = () => {
         </td>
         `
 
-        listaCarrito.append(body)
+        productosCarrito.append(body)
         
         const btnAgregar = document.getElementById(`+${id}`)
         const btnRestar = document.getElementById(`-${id}`)
@@ -75,32 +75,32 @@ const cardsCarrito = () => {
         
     });
 
-    dibujarFooter()
+    footerCarrito()
 }
 
-const dibujarFooter = () => {
+const footerCarrito = () => {
 
     if(carrito.length > 0){
-        footCarrito.innerHTML = ""
+        footerTable.innerHTML = ""
 
         let footer = document.createElement("tr")
 
         footer.innerHTML = `
         <th class="th"><b>Totales:</b></th>
         <td></td>
-        <td>${generarTotales().cantidadTotal}</td>
+        <td>${calcularTotales().cantidadTotal}</td>
         <td></td>
-        <td>${generarTotales().costoTotal}</td>
+        <td>${calcularTotales().costoTotal}</td>
         `
 
-        footCarrito.append(footer)
+        footerTable.append(footer)
     }else{
-        footCarrito.innerHTML = "<h3>No hay productos en el carrito</h3>"
+        footerTable.innerHTML = "<h3>Carrito vacio</h3>"
     }
 
 }
 
-const generarTotales = () => {
+const calcularTotales = () => {
     const costoTotal = carrito.reduce((total, { precio }) => total + precio, 0)
     const cantidadTotal = carrito.reduce((total, {cantidad}) => total + cantidad, 0)
 
@@ -118,7 +118,7 @@ const aumentarCantidad = (id) => {
     carrito[indexProductoCarrito].precio = precio*carrito[indexProductoCarrito].cantidad
 
     sessionStorage.setItem("carrito", JSON.stringify(carrito))
-    cardsCarrito()
+    itemsCarrito()
 
 }
 
@@ -134,8 +134,5 @@ const restarCantidad = (id) => {
     }
 
     sessionStorage.setItem("carrito", JSON.stringify(carrito))
-    cardsCarrito()
-
-
-
+    itemsCarrito()
 }
