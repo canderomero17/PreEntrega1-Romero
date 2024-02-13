@@ -13,7 +13,7 @@ const cardsProductos = (productos) => {
     const { nombre, precio, id } = producto
     let card = document.createElement("div");
     card.innerHTML = `
-      <p class="nombre">Nombre: ${nombre}</p>
+      <p class="nombre">${nombre}</p>
       <b class="precio">$${precio}</b>
       <button class="agregarCarrito" id="btn${id}">Agregar al Carrito</button>
     `;  

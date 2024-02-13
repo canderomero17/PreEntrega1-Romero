@@ -8,14 +8,48 @@
     text-align: center;
 }
 
+.contenedorProductos {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: space-around;
+}    
+
 .container {
     display: flex;
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    gap: 10px;
+    padding: 10px;
+    border: solid 3px blanchedalmond;
+    width: 200px;
+    text-align: center;
 }
+
 
 .contenedorCarrito {
     display: none;
+}
+
+.table {
+    margin: auto;
+    text-align: center;
+}
+
+.nombre {
+    margin: 0;
+}
+
+.masBtn {
+    background-color: greenyellow;
+}
+
+.menosBtn {
+    background-color: red;
+}
+
+.th {
+    padding: 10px;
 }

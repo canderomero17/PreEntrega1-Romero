@@ -60,8 +60,8 @@ const cardsCarrito = () => {
         <td>${precio /cantidad}</td>
         <td>${precio}</td>
         <td>
-        <button id="+${id}">+</button>
-        <button id="-${id}">-</button>
+        <button id="+${id}" class="masBtn">+</button>
+        <button id="-${id}" class="menosBtn">-</button>
         </td>
         `
 
@@ -86,7 +86,7 @@ const dibujarFooter = () => {
         let footer = document.createElement("tr")
 
         footer.innerHTML = `
-        <th><b>Totales:</b></th>
+        <th class="th"><b>Totales:</b></th>
         <td></td>
         <td>${generarTotales().cantidadTotal}</td>
         <td></td>
