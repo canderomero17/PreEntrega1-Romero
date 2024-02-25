@@ -1,72 +1,82 @@
 [
     {
         "id": 1,
-        "nombre": "gloss transparente",
+        "nombre": "Gloss transparente",
         "precio": 2000,
         "stock": 2,
-        "categoria": "Labiales"
+        "categoria": "Labiales",
+        "img" : "./images/glossTransparente.webp"
     },
     {
         "id": 2,
-        "nombre": "delineador liquido",
+        "nombre": "Delineador líquido",
         "precio": 1200,
         "stock": 5,
-        "categoria": "Deloineadores"
+        "categoria": "Delineadores",
+        "img" : "./images/delineadorLiquido.webp"
     },
     {
         "id": 3,
-        "nombre": "labial rojo",
+        "nombre": "Labial rojo",
         "precio": 1200,
         "stock": 5,
-        "categoria": "Labiales"
+        "categoria": "Labiales",
+        "img" : "./images/labialRojo.webp"
     },
     {
         "id": 4,
-        "nombre": "delineador lapiz",
+        "nombre": "Delineador lápiz",
         "precio": 1300,
         "stock": 4,
-        "categoria": "Delineadores"
+        "categoria": "Delineadores",
+        "img" : "./images/delineadorLapiz.webp"
     },
     {
         "id": 5,
-        "nombre": "base liquida",
+        "nombre": "Base líquida",
         "precio": 1700,
         "stock": 5,
-        "categoria": "Bases"
+        "categoria": "Bases",
+        "img" : "./images/baseLiquida.webp"
     },
     {
         "id": 6,
-        "nombre": "base compacta",
+        "nombre": "Base compacta",
         "precio": 1900,
         "stock": 2,
-        "categoria": "Bases"
+        "categoria": "Bases",
+        "img" : "./images/baseCompacta.webp"
     },
     {
         "id": 7,
-        "nombre": "gloss rosado",
+        "nombre": "Gloss rosado",
         "precio": 2100,
         "stock": 9,
-        "categoria": "Labiales"
+        "categoria": "Labiales",
+        "img" : "./images/glossRosad.jpg"
     },
     {
         "id": 8,
-        "nombre": "delineador gel",
+        "nombre": "Delineador gel",
         "precio": 2300,
         "stock": 4,
-        "categoria": "Delineadores"
+        "categoria": "Delineadores",
+        "img" : "./images/delineadorGel.jpg"
     },
     {
         "id": 9,
-        "nombre": "labial rosado",
+        "nombre": "Labial rosado",
         "precio": 2300,
         "stock": 2,
-        "categoria": "Labiales"
+        "categoria": "Labiales",
+        "img" : "./images/labialRosado.jpg"
     },
     {
         "id": 10,
-        "nombre": "labial beige",
+        "nombre": "Labial beige",
         "precio": 2300,
         "stock": 8,
-        "categoria": "Labiales"
+        "categoria": "Labiales",
+        "img" : "./images/labialBeige.jpg"
     }
 ]

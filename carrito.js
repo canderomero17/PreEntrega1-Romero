@@ -121,7 +121,7 @@ const aumentarCantidad = (id) => {
     carrito[indexProductoCarrito].cantidad++
     carrito[indexProductoCarrito].precio = precio*carrito[indexProductoCarrito].cantidad
 
-    sessionStorage.setItem("carrito", JSON.stringify(carrito))
+    localStorage.setItem("carrito", JSON.stringify(carrito))
     itemsCarrito()
 
 }
@@ -137,6 +137,6 @@ const restarCantidad = (id) => {
         carrito.splice(indexProductoCarrito, 1)
     }
 
-    sessionStorage.setItem("carrito", JSON.stringify(carrito))
+    localStorage.setItem("carrito", JSON.stringify(carrito))
     itemsCarrito()
 }
