@@ -1,10 +1,10 @@
 import { productosDisponibles } from "./main.js"
 
-JSON.parse(sessionStorage.getItem("carrito")) === null && sessionStorage.setItem("carrito", JSON.stringify([]))
+JSON.parse(localStorage.getItem("carrito")) === null && localStorage.setItem("carrito", JSON.stringify([]))
 
 document.addEventListener("DOMContentLoaded", () => {itemsCarrito()})
 
-let carrito = JSON.parse(sessionStorage.getItem("carrito"))
+let carrito = JSON.parse(localStorage.getItem("carrito"))
 const productosCarrito = document.getElementById("items")
 const footerTable = document.getElementById("footer")
 const btnCarrito = document.getElementById("btnCarrito")
@@ -34,16 +34,20 @@ export const agregarCarrito = (idProducto) => {
             cantidad: 1
         }
         carrito.push(nuevoProductoCarrito)
-        sessionStorage.setItem("carrito", JSON.stringify(carrito))
+        localStorage.setItem("carrito", JSON.stringify(carrito))
     } else {
         const indexProductoCarrito = carrito.findIndex((producto) => producto.id === idProducto)
         carrito[indexProductoCarrito].cantidad++
         carrito[indexProductoCarrito].precio = precio * carrito[indexProductoCarrito].cantidad
-        sessionStorage.setItem("carrito", JSON.stringify(carrito))
+        localStorage.setItem("carrito", JSON.stringify(carrito))
     }
 
-    carrito = JSON.parse(sessionStorage.getItem("carrito"))
-    alert(`producto ${nombre} agregado al carrito`)
+    carrito = JSON.parse(localStorage.getItem("carrito"))
+    Swal.fire({
+        title: "Buen trabajo!",
+        text: `${nombre} agregado al carrito`,
+        icon: "success",
+      })
 }
 
 const itemsCarrito = () => {
