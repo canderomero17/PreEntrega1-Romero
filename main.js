@@ -36,7 +36,7 @@ function mostrarProductos(productos) {
 
 const productosGuardados = JSON.parse(localStorage.getItem("productos"));
   if (!productosGuardados) {
-    localStorage.setItem("productos", JSON.stringify(data));
+    localStorage.setItem("productos", JSON.stringify(productosDisponibles));
     console.log("Productos cargados en localStorage:", data);
     productosDisponibles = data;
     mostrarProductos();
