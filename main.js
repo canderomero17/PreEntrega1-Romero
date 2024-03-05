@@ -10,13 +10,14 @@ function cargarProductosEnLocalStorage() {
     .then((data) => {
       localStorage.setItem("productos", JSON.stringify(data));
       console.log("Productos cargados en localStorage:", data);
+      productosDisponibles = data;
       mostrarProductos(data); 
     })
     .catch((error) => console.error("Error al cargar productos:", error));
 }
 
 function mostrarProductos(productos) {
-  productosDisponibles = productos;
+ // productosDisponibles = productos;
   productos.forEach((item) => {
     let card = document.createElement("div");
       card.innerHTML = `
@@ -36,12 +37,9 @@ function mostrarProductos(productos) {
 
 const productosGuardados = JSON.parse(localStorage.getItem("productos"));
   if (!productosGuardados) {
-    localStorage.setItem("productos", JSON.stringify(productosDisponibles));
-    console.log("Productos cargados en localStorage:", data);
-    productosDisponibles = data;
-    mostrarProductos();
+    cargarProductosEnLocalStorage();
   } else {
-    cargarProductosEnLocalStorage()
+    mostrarProductos(productosDisponibles);
   }
 
   export { productosDisponibles };
