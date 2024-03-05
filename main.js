@@ -17,7 +17,6 @@ function cargarProductosEnLocalStorage() {
 }
 
 function mostrarProductos(productos) {
- // productosDisponibles = productos;
   productos.forEach((item) => {
     let card = document.createElement("div");
       card.innerHTML = `
@@ -39,6 +38,7 @@ const productosGuardados = JSON.parse(localStorage.getItem("productos"));
   if (!productosGuardados) {
     cargarProductosEnLocalStorage();
   } else {
+    productosDisponibles = productosGuardados;
     mostrarProductos(productosDisponibles);
   }
 
